@@ -1,0 +1,238 @@
+/* css/appunto.css */
+
+body {
+  font-family: var(--font-principale);
+  background-color: var(--sfondo-pagina);
+  color: var(--testo-principale);
+}
+
+.main-appunto {
+  margin-top: 80px;
+  padding: var(--spazio-6) var(--spazio-4);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spazio-5);
+}
+
+.btn-torna {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spazio-2);
+  color: var(--colore-primario);
+  font-weight: 600;
+  font-size: var(--testo-sm);
+  transition: var(--transizione-veloce);
+}
+.btn-torna:hover { color: var(--colore-primario-scuro); }
+
+.appunto-card {
+  background: var(--sfondo-card);
+  border-radius: var(--raggio-xl);
+  border: 1.5px solid var(--bordo-colore);
+  padding: var(--spazio-8);
+  box-shadow: var(--ombra-md);
+  animation: entra 0.3s ease;
+}
+
+@keyframes entra {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.appunto-titolo {
+  font-family: var(--font-titoli);
+  font-size: var(--testo-3xl);
+  margin-bottom: var(--spazio-3);
+  line-height: 1.2;
+}
+
+.appunto-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spazio-3);
+  margin-bottom: var(--spazio-5);
+  align-items: center;
+}
+.appunto-autore { font-size: var(--testo-sm); color: var(--testo-secondario); }
+.appunto-data { font-size: var(--testo-xs); color: var(--testo-chiaro); }
+
+.appunto-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spazio-2);
+  margin-bottom: var(--spazio-5);
+}
+
+.appunto-stats {
+  display: flex;
+  gap: var(--spazio-5);
+  padding-top: var(--spazio-4);
+  border-top: 1px solid var(--bordo-colore);
+  flex-wrap: wrap;
+}
+.stat {
+  display: flex;
+  align-items: center;
+  gap: var(--spazio-1);
+  font-size: var(--testo-sm);
+  color: var(--testo-secondario);
+}
+
+/* ── SEZIONE ── */
+.sezione {
+  background: var(--sfondo-card);
+  border-radius: var(--raggio-xl);
+  border: 1.5px solid var(--bordo-colore);
+  padding: var(--spazio-6);
+  box-shadow: var(--ombra-sm);
+}
+.sezione-titolo {
+  font-size: var(--testo-xl);
+  font-weight: 700;
+  margin-bottom: var(--spazio-4);
+}
+
+/* ── PDF VIEWER ── */
+.pdf-viewer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spazio-4);
+  flex-wrap: wrap;
+  gap: var(--spazio-3);
+}
+.pdf-viewer-azioni {
+  display: flex;
+  align-items: center;
+  gap: var(--spazio-2);
+}
+.pdf-btn {
+  padding: var(--spazio-2) var(--spazio-3);
+  border: 1.5px solid var(--bordo-colore);
+  border-radius: var(--raggio-md);
+  font-size: var(--testo-sm);
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--sfondo-pagina);
+  transition: var(--transizione-veloce);
+  text-decoration: none;
+  color: var(--testo-principale);
+}
+.pdf-btn:hover {
+  border-color: var(--colore-primario);
+  color: var(--colore-primario);
+}
+.pdf-btn-scarica {
+  background: var(--colore-primario);
+  color: white;
+  border-color: var(--colore-primario);
+}
+.pdf-btn-scarica:hover {
+  background: var(--colore-primario-scuro);
+  color: white;
+}
+
+.pdf-embed-wrapper {
+  width: 100%;
+  height: 600px;
+  border-radius: var(--raggio-md);
+  overflow: hidden;
+  border: 1.5px solid var(--bordo-colore);
+  background: #525659;
+}
+.pdf-embed-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ── STELLE ── */
+.voto-interattivo {
+  display: flex;
+  align-items: center;
+  gap: var(--spazio-4);
+}
+.stelle-grandi { display: flex; gap: var(--spazio-1); }
+.stella-grande {
+  font-size: 36px;
+  color: var(--testo-chiaro);
+  cursor: pointer;
+  transition: var(--transizione-veloce);
+  line-height: 1;
+}
+.stella-grande:hover, .stella-grande.hover { color: var(--colore-accento); transform: scale(1.2); }
+.stella-grande.piena { color: var(--colore-accento); }
+.testo-voto { font-size: var(--testo-sm); color: var(--testo-secondario); font-style: italic; }
+
+/* ── COMMENTI ── */
+.form-commento {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spazio-3);
+  margin-bottom: var(--spazio-5);
+}
+.form-commento textarea {
+  width: 100%;
+  padding: var(--spazio-3) var(--spazio-4);
+  border: 1.5px solid var(--bordo-colore);
+  border-radius: var(--raggio-md);
+  font-size: var(--testo-base);
+  font-family: var(--font-principale);
+  resize: vertical;
+  outline: none;
+  transition: var(--transizione-veloce);
+  background: var(--sfondo-input);
+}
+.form-commento textarea:focus {
+  border-color: var(--colore-primario);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.commento-item {
+  padding: var(--spazio-4) 0;
+  border-bottom: 1px solid var(--bordo-colore);
+  animation: entra 0.2s ease;
+}
+.commento-item:last-child { border-bottom: none; }
+.commento-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spazio-2);
+  margin-bottom: var(--spazio-2);
+}
+.commento-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--raggio-full);
+}
+.commento-autore { font-weight: 600; font-size: var(--testo-sm); }
+.commento-data { font-size: var(--testo-xs); color: var(--testo-chiaro); }
+.commento-testo {
+  font-size: var(--testo-sm);
+  line-height: 1.6;
+  padding-left: 40px;
+}
+
+/* ── CONTATTA AUTORE ── */
+.btn-contatta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spazio-2);
+  padding: var(--spazio-2) var(--spazio-4);
+  border: 1.5px solid var(--colore-primario);
+  border-radius: var(--raggio-full);
+  color: var(--colore-primario);
+  font-size: var(--testo-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transizione-veloce);
+  background: none;
+  text-decoration: none;
+}
+.btn-contatta:hover {
+  background: var(--colore-primario);
+  color: white;
+}

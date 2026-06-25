@@ -1,0 +1,79 @@
+/* css/variabili.css
+   Tutte le "variabili CSS" del progetto.
+   Cambiarle qui le aggiorna ovunque nel sito.
+   
+   Le variabili CSS si dichiarano con -- e si usano con var() */
+
+:root {
+
+  /* ─── COLORI PRINCIPALI ─── */
+  --colore-primario:        #2563EB;   /* blu principale */
+  --colore-primario-scuro:  #1D4ED8;   /* hover dei bottoni */
+  --colore-primario-chiaro: #DBEAFE;   /* sfondi leggeri */
+  --colore-accento:         #F59E0B;   /* giallo per stelle e highlights */
+
+  /* ─── TESTO ─── */
+  --testo-principale:  #111827;   /* quasi nero */
+  --testo-secondario:  #6B7280;   /* grigio medio */
+  --testo-chiaro:      #9CA3AF;   /* grigio chiaro (placeholder) */
+  --testo-bianco:      #FFFFFF;
+
+  /* ─── SFONDI ─── */
+  --sfondo-pagina:     #F3F4F6;   /* grigio chiarissimo */
+  --sfondo-card:       #FFFFFF;   /* bianco per le card */
+  --sfondo-input:      #F9FAFB;   /* grigio quasi bianco per gli input */
+
+  /* ─── BORDI ─── */
+  --bordo-colore:      #E5E7EB;
+  --bordo-focus:       #2563EB;   /* uguale al primario */
+  --bordo-errore:      #EF4444;
+
+  /* ─── STATI ─── */
+  --colore-successo:   #10B981;
+  --colore-errore:     #EF4444;
+  --colore-warning:    #F59E0B;
+
+  /* ─── TIPOGRAFIA ─── */
+  --font-principale: 'DM Sans', 'Segoe UI', sans-serif;
+  --font-titoli:     'DM Serif Display', Georgia, serif;
+
+  /* Dimensioni testo */
+  --testo-xs:   0.75rem;    /* 12px */
+  --testo-sm:   0.875rem;   /* 14px */
+  --testo-base: 1rem;       /* 16px */
+  --testo-lg:   1.125rem;   /* 18px */
+  --testo-xl:   1.25rem;    /* 20px */
+  --testo-2xl:  1.5rem;     /* 24px */
+  --testo-3xl:  1.875rem;   /* 30px */
+  --testo-4xl:  2.25rem;    /* 36px */
+
+  /* ─── SPAZIATURA ─── */
+  --spazio-1:  0.25rem;   /* 4px  */
+  --spazio-2:  0.5rem;    /* 8px  */
+  --spazio-3:  0.75rem;   /* 12px */
+  --spazio-4:  1rem;      /* 16px */
+  --spazio-5:  1.25rem;   /* 20px */
+  --spazio-6:  1.5rem;    /* 24px */
+  --spazio-8:  2rem;      /* 32px */
+  --spazio-10: 2.5rem;    /* 40px */
+  --spazio-12: 3rem;      /* 48px */
+  --spazio-16: 4rem;      /* 64px */
+
+  /* ─── BORDI ARROTONDATI ─── */
+  --raggio-sm:   4px;
+  --raggio-md:   8px;
+  --raggio-lg:   12px;
+  --raggio-xl:   16px;
+  --raggio-full: 9999px;  /* cerchio / pillola */
+
+  /* ─── OMBRE ─── */
+  --ombra-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --ombra-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+  --ombra-lg: 0 10px 15px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.05);
+  --ombra-xl: 0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04);
+
+  /* ─── TRANSIZIONI ─── */
+  --transizione-veloce:  all 0.15s ease;
+  --transizione-normale: all 0.25s ease;
+  --transizione-lenta:   all 0.4s ease;
+}

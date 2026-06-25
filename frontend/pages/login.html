@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accedi — AppuntiHUB</title>
+
+  <!-- Google Fonts: DM Sans (testo) + DM Serif Display (titoli) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  <!-- CSS: l'ordine è importante! -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variabili.css">
+  <link rel="stylesheet" href="../css/componenti.css">
+  <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+
+  <div class="auth-container">
+    <div class="auth-card">
+
+      <!-- ── HEADER ── -->
+      <div class="auth-header">
+        <div class="auth-logo">📚</div>
+        <h1 class="auth-titolo">AppuntiHUB</h1>
+        <p class="auth-sottotitolo">Accedi alla tua piattaforma di studio</p>
+      </div>
+
+      <!-- ── MESSAGGIO GLOBALE (errore / successo) ── -->
+      <div id="messaggio-login" class="messaggio" role="alert"></div>
+
+      <!-- ═══════════════════════════════════════════
+           SEZIONE LOGIN (step 1)
+      ═══════════════════════════════════════════ -->
+      <div id="sezione-login">
+        <form id="form-login" class="auth-form" novalidate>
+
+          <!-- Email -->
+          <div class="campo">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="mario@esempio.it"
+              autocomplete="email"
+              required
+            >
+            <span class="errore-testo"></span>
+          </div>
+
+          <!-- Password -->
+          <div class="campo">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="La tua password"
+              autocomplete="current-password"
+              required
+            >
+            <span class="errore-testo"></span>
+          </div>
+
+          <!-- Link forgot password -->
+          <div style="text-align: right; margin-top: -8px;">
+            <a href="#" id="link-forgot" class="link" style="font-size: var(--testo-sm);">
+              Password dimenticata?
+            </a>
+          </div>
+
+          <!-- Bottone accedi -->
+          <button type="submit" id="btn-login" class="btn btn-primario">
+            Accedi
+          </button>
+
+        </form>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           SEZIONE OTP (step 2 — nascosta all'inizio)
+      ═══════════════════════════════════════════ -->
+      <div id="sezione-otp" class="sezione-otp">
+
+        <!-- Info box -->
+        <div class="otp-info">
+          <p>📧 Abbiamo inviato un codice a 6 cifre a</p>
+          <p><strong id="email-otp"></strong></p>
+        </div>
+
+        <div id="messaggio-otp" class="messaggio" role="alert"></div>
+
+        <form id="form-otp" class="auth-form" novalidate>
+
+          <div class="campo">
+            <label for="codice-otp">Codice di verifica</label>
+            <input
+              type="text"
+              id="codice-otp"
+              name="codice"
+              placeholder="123456"
+              maxlength="6"
+              inputmode="numeric"
+              pattern="[0-9]{6}"
+              class="otp-input-grande"
+              autocomplete="one-time-code"
+              required
+            >
+            <span class="errore-testo"></span>
+          </div>
+
+          <button type="submit" id="btn-otp" class="btn btn-primario">
+            Verifica codice
+          </button>
+
+          <!-- Torna al login -->
+          <button
+            type="button"
+            class="btn btn-secondario"
+            onclick="location.reload()"
+          >
+            ← Ricomincia
+          </button>
+
+        </form>
+      </div>
+
+      <!-- ── FOOTER ── -->
+      <div class="auth-footer">
+        Non hai un account?
+        <a href="registrazione.html" class="link">Registrati gratis</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JS: l'ordine è importante! config → storage → utils → api → login -->
+  <script src="../js/config.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/login.js"></script>
+
+</body>
+</html>

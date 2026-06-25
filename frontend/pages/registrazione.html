@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrati — AppuntiHUB</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variabili.css">
+  <link rel="stylesheet" href="../css/componenti.css">
+  <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+
+  <div class="auth-container">
+    <div class="auth-card">
+
+      <!-- ── HEADER ── -->
+      <div class="auth-header">
+        <div class="auth-logo">📚</div>
+        <h1 class="auth-titolo">Crea account</h1>
+        <p class="auth-sottotitolo">Entra nella community di AppuntiHUB</p>
+      </div>
+
+      <!-- ── MESSAGGIO GLOBALE ── -->
+      <div id="messaggio-reg" class="messaggio" role="alert"></div>
+
+      <form id="form-registrazione" class="auth-form" novalidate>
+
+        <!-- ── AVATAR UPLOAD ── -->
+        <div class="avatar-upload">
+          <div class="avatar-preview-wrapper" id="avatar-wrapper" title="Clicca per scegliere una foto">
+            <!-- Immagine di preview (placeholder di default) -->
+            <img
+              id="avatar-preview"
+              src="https://ui-avatars.com/api/?background=E5E7EB&color=9CA3AF&size=96&name=+"
+              alt="Avatar"
+              class="avatar-preview"
+            >
+            <!-- Overlay con icona fotocamera -->
+            <div class="avatar-overlay">
+              <span>📷</span>
+            </div>
+          </div>
+
+          <!-- Input file reale (invisibile, si apre cliccando il wrapper) -->
+          <input type="file" id="input-avatar" accept="image/*">
+
+          <p class="avatar-testo">
+            Clicca per aggiungere una foto<br>
+            <span style="color: var(--testo-chiaro);">JPG, PNG, GIF — max 2MB (opzionale)</span>
+          </p>
+        </div>
+
+        <!-- ── SELEZIONE RUOLO ── -->
+        <div class="campo">
+          <label>Sei uno studente o un professore?</label>
+          <div class="selezione-ruolo">
+
+            <div class="ruolo-card" data-ruolo="studente">
+              <span class="ruolo-icona">🎒</span>
+              <span class="ruolo-nome">Studente</span>
+            </div>
+
+            <div class="ruolo-card" data-ruolo="professore">
+              <span class="ruolo-icona">👨‍🏫</span>
+              <span class="ruolo-nome">Professore</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── EMAIL ── -->
+        <div class="campo">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="mario@esempio.it"
+            autocomplete="email"
+            required
+          >
+          <span class="errore-testo"></span>
+        </div>
+
+        <!-- ── PASSWORD ── -->
+        <div class="campo">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Minimo 6 caratteri"
+            autocomplete="new-password"
+            required
+          >
+          <span class="errore-testo"></span>
+        </div>
+
+        <!-- ── CONFERMA PASSWORD ── -->
+        <div class="campo">
+          <label for="conferma-password">Conferma password</label>
+          <input
+            type="password"
+            id="conferma-password"
+            name="conferma-password"
+            placeholder="Ripeti la password"
+            autocomplete="new-password"
+            required
+          >
+          <span class="errore-testo"></span>
+        </div>
+
+        <!-- ── BOTTONE ── -->
+        <button type="submit" id="btn-registrati" class="btn btn-primario">
+          Crea account
+        </button>
+
+      </form>
+
+      <!-- ── FOOTER ── -->
+      <div class="auth-footer">
+        Hai già un account?
+        <a href="login.html" class="link">Accedi</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JS: config → storage → utils → api → avatar → registrazione -->
+  <script src="../js/config.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/avatar.js"></script>
+  <script src="../js/registrazione.js"></script>
+
+</body>
+</html>

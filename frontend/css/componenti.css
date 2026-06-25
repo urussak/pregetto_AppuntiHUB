@@ -1,0 +1,191 @@
+/* css/componenti.css
+   Componenti riutilizzabili in tutto il sito:
+   bottoni, input, messaggi di errore/successo, spinner */
+
+/* ─────────────────────────────────────────
+   BOTTONI
+───────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spazio-2);
+  padding: var(--spazio-3) var(--spazio-6);
+  border-radius: var(--raggio-md);
+  font-size: var(--testo-base);
+  font-weight: 600;
+  transition: var(--transizione-veloce);
+  width: 100%;
+}
+
+/* Bottone principale (blu) */
+.btn-primario {
+  background-color: var(--colore-primario);
+  color: var(--testo-bianco);
+}
+.btn-primario:hover {
+  background-color: var(--colore-primario-scuro);
+  transform: translateY(-1px);
+  box-shadow: var(--ombra-md);
+}
+.btn-primario:active {
+  transform: translateY(0);
+}
+
+/* Bottone secondario (bordo) */
+.btn-secondario {
+  background-color: transparent;
+  color: var(--colore-primario);
+  border: 2px solid var(--colore-primario);
+}
+.btn-secondario:hover {
+  background-color: var(--colore-primario-chiaro);
+}
+
+/* Bottone disabilitato */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ─────────────────────────────────────────
+   CAMPI INPUT
+───────────────────────────────────────── */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spazio-1);
+}
+
+.campo label {
+  font-size: var(--testo-sm);
+  font-weight: 600;
+  color: var(--testo-principale);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: var(--spazio-3) var(--spazio-4);
+  background-color: var(--sfondo-input);
+  border: 1.5px solid var(--bordo-colore);
+  border-radius: var(--raggio-md);
+  font-size: var(--testo-base);
+  color: var(--testo-principale);
+  transition: var(--transizione-veloce);
+  outline: none;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  border-color: var(--bordo-focus);
+  background-color: var(--sfondo-card);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1); /* alone blu chiaro */
+}
+
+.campo input.errore,
+.campo select.errore {
+  border-color: var(--bordo-errore);
+}
+
+.campo input::placeholder {
+  color: var(--testo-chiaro);
+}
+
+/* Testo errore sotto il campo */
+.campo .errore-testo {
+  font-size: var(--testo-xs);
+  color: var(--colore-errore);
+  display: none; /* mostrato via JS quando c'è un errore */
+}
+.campo .errore-testo.visibile {
+  display: block;
+}
+
+/* ─────────────────────────────────────────
+   MESSAGGI GLOBALI (successo / errore)
+───────────────────────────────────────── */
+
+.messaggio {
+  padding: var(--spazio-3) var(--spazio-4);
+  border-radius: var(--raggio-md);
+  font-size: var(--testo-sm);
+  font-weight: 500;
+  display: none; /* mostrato via JS */
+  align-items: center;
+  gap: var(--spazio-2);
+}
+.messaggio.visibile {
+  display: flex;
+}
+
+.messaggio-errore {
+  background-color: #FEE2E2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
+}
+
+.messaggio-successo {
+  background-color: #D1FAE5;
+  color: #065F46;
+  border: 1px solid #A7F3D0;
+}
+
+/* ─────────────────────────────────────────
+   SPINNER DI CARICAMENTO
+───────────────────────────────────────── */
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: ruota 0.7s linear infinite;
+  display: none;
+}
+.spinner.visibile {
+  display: inline-block;
+}
+
+@keyframes ruota {
+  to { transform: rotate(360deg); }
+}
+
+/* ─────────────────────────────────────────
+   DIVISORE "oppure"
+───────────────────────────────────────── */
+
+.divisore {
+  display: flex;
+  align-items: center;
+  gap: var(--spazio-3);
+  color: var(--testo-chiaro);
+  font-size: var(--testo-sm);
+}
+.divisore::before,
+.divisore::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--bordo-colore);
+}
+
+/* ─────────────────────────────────────────
+   LINK
+───────────────────────────────────────── */
+
+.link {
+  color: var(--colore-primario);
+  font-weight: 500;
+  transition: var(--transizione-veloce);
+}
+.link:hover {
+  color: var(--colore-primario-scuro);
+  text-decoration: underline;
+}

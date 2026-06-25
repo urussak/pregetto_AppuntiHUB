@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appunto — AppuntiHUB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variabili.css">
+  <link rel="stylesheet" href="../css/componenti.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/appunto.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-sinistra">
+      <a href="home.html" class="topbar-logo">📚 AppuntiHUB</a>
+    </div>
+    <div class="topbar-destra">
+      <a href="messaggi.html" class="btn-carica" style="background:var(--sfondo-pagina);color:var(--testo-principale);border:1.5px solid var(--bordo-colore);">✉️ Messaggi</a>
+      <img id="avatar-topbar" class="avatar-utente"
+           src="https://ui-avatars.com/api/?background=2563EB&color=fff&size=36&name=?"
+           alt="Profilo" onclick="window.location.href='profilo.html'"
+           style="cursor:pointer" title="Il mio profilo">
+      <button class="btn-logout" id="btn-logout">Esci</button>
+    </div>
+  </header>
+
+  <main class="main-appunto">
+    <a href="home.html" class="btn-torna">← Torna alla home</a>
+
+    <div class="appunto-card" id="appunto-card">
+      <div class="stato-vuoto"><div class="icona">⏳</div><p>Caricamento...</p></div>
+    </div>
+
+    <div class="sezione" id="sezione-pdf" style="display:none">
+      <div class="pdf-viewer-header">
+        <h2 class="sezione-titolo" style="margin:0">📄 Visualizza PDF</h2>
+        <div class="pdf-viewer-azioni">
+          <a id="btn-download-pdf" href="#" target="_blank" class="pdf-btn pdf-btn-scarica">⬇️ Scarica</a>
+        </div>
+      </div>
+      <div class="pdf-embed-wrapper">
+        <iframe id="pdf-iframe" src="" frameborder="0"></iframe>
+      </div>
+    </div>
+
+    <div class="sezione" id="sezione-voto" style="display:none">
+      <h2 class="sezione-titolo">⭐ Valuta questo appunto</h2>
+      <div class="voto-interattivo">
+        <div class="stelle-grandi" id="stelle-voto">
+          <span class="stella-grande" data-voto="1">★</span>
+          <span class="stella-grande" data-voto="2">★</span>
+          <span class="stella-grande" data-voto="3">★</span>
+          <span class="stella-grande" data-voto="4">★</span>
+          <span class="stella-grande" data-voto="5">★</span>
+        </div>
+        <span id="testo-voto" class="testo-voto">Clicca per votare</span>
+      </div>
+    </div>
+
+    <div class="sezione" id="sezione-commenti" style="display:none">
+      <h2 class="sezione-titolo">💬 Commenti</h2>
+      <div class="form-commento">
+        <textarea id="input-commento" placeholder="Scrivi un commento..." rows="3"></textarea>
+        <button class="btn btn-primario" id="btn-commento" onclick="inviaCommento()">Pubblica</button>
+      </div>
+      <div id="messaggio-commento" class="messaggio"></div>
+      <div id="lista-commenti"></div>
+    </div>
+  </main>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/appunto.js"></script>
+</body>
+</html>

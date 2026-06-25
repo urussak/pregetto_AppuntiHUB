@@ -1,0 +1,7 @@
+{
+    "name": "appuntihub/backend",
+    "description": "AppuntiHUB - Backend PHP procedurale",
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
+}

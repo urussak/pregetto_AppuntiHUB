@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il mio profilo — AppuntiHUB</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variabili.css">
+  <link rel="stylesheet" href="../css/componenti.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/profilo.css">
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-sinistra">
+      <a href="home.html" class="topbar-logo">📚 AppuntiHUB</a>
+    </div>
+    <div class="topbar-destra">
+      <img id="avatar-topbar" class="avatar-utente"
+           src="https://ui-avatars.com/api/?background=2563EB&color=fff&size=36&name=?"
+           alt="Profilo">
+      <button class="btn-logout" id="btn-logout">Esci</button>
+    </div>
+  </header>
+
+  <!-- CONTENUTO -->
+  <main class="main-profilo">
+
+    <a href="home.html" class="btn-torna">← Torna alla home</a>
+
+    <!-- Card profilo -->
+    <div class="profilo-card">
+
+      <!-- Avatar grande con possibilità di cambio -->
+      <div class="profilo-avatar-wrapper">
+        <div class="avatar-grande-wrapper" id="avatar-wrapper" title="Clicca per cambiare foto">
+          <img id="avatar-grande"
+               src="https://ui-avatars.com/api/?background=2563EB&color=fff&size=120&name=?"
+               alt="Avatar" class="avatar-grande">
+          <div class="avatar-overlay-grande">
+            <span>📷</span>
+          </div>
+        </div>
+        <input type="file" id="input-avatar" accept="image/*" style="display:none">
+        <p class="avatar-hint">Clicca per cambiare foto</p>
+      </div>
+
+      <!-- Info utente -->
+      <div class="profilo-info">
+        <h1 class="profilo-email" id="profilo-email">Caricamento...</h1>
+        <div class="profilo-ruolo" id="profilo-ruolo"></div>
+        <div class="profilo-data" id="profilo-data"></div>
+      </div>
+
+      <!-- Messaggio feedback avatar -->
+      <div id="messaggio-avatar" class="messaggio"></div>
+
+      <!-- Stats -->
+      <div class="profilo-stats" id="profilo-stats">
+        <div class="stat-card">
+          <div class="stat-numero" id="stat-appunti">—</div>
+          <div class="stat-label">Appunti caricati</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-numero" id="stat-commenti">—</div>
+          <div class="stat-label">Commenti scritti</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-numero" id="stat-voto">—</div>
+          <div class="stat-label">Voto medio ricevuto</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- I miei appunti -->
+    <div class="sezione">
+      <h2 class="sezione-titolo">📄 I miei appunti</h2>
+      <div id="miei-appunti">
+        <div class="stato-vuoto"><p>Caricamento...</p></div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/profilo.js"></script>
+
+</body>
+</html>

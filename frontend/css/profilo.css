@@ -1,0 +1,191 @@
+/* css/profilo.css */
+
+body {
+  font-family: var(--font-principale);
+  background-color: var(--sfondo-pagina);
+  color: var(--testo-principale);
+}
+
+.main-profilo {
+  margin-top: 80px;
+  padding: var(--spazio-6) var(--spazio-4);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spazio-5);
+}
+
+.btn-torna {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spazio-2);
+  color: var(--colore-primario);
+  font-weight: 600;
+  font-size: var(--testo-sm);
+  transition: var(--transizione-veloce);
+}
+.btn-torna:hover { color: var(--colore-primario-scuro); }
+
+/* ── CARD PROFILO ── */
+.profilo-card {
+  background: var(--sfondo-card);
+  border-radius: var(--raggio-xl);
+  border: 1.5px solid var(--bordo-colore);
+  padding: var(--spazio-8);
+  box-shadow: var(--ombra-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spazio-5);
+  animation: entra 0.3s ease;
+}
+
+@keyframes entra {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── AVATAR GRANDE ── */
+.avatar-grande-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+}
+
+.avatar-grande {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--raggio-full);
+  object-fit: cover;
+  border: 4px solid var(--bordo-colore);
+  transition: var(--transizione-normale);
+}
+
+.avatar-overlay-grande {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--raggio-full);
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transizione-veloce);
+  font-size: 28px;
+}
+.avatar-grande-wrapper:hover .avatar-overlay-grande { opacity: 1; }
+.avatar-grande-wrapper:hover .avatar-grande { border-color: var(--colore-primario); }
+
+.avatar-hint {
+  font-size: var(--testo-xs);
+  color: var(--testo-chiaro);
+  text-align: center;
+  margin-top: var(--spazio-2);
+}
+
+/* ── INFO ── */
+.profilo-info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spazio-2);
+}
+
+.profilo-email {
+  font-size: var(--testo-2xl);
+  font-weight: 700;
+}
+
+.profilo-ruolo {
+  display: inline-block;
+  padding: var(--spazio-1) var(--spazio-3);
+  border-radius: var(--raggio-full);
+  font-size: var(--testo-sm);
+  font-weight: 600;
+  background-color: var(--colore-primario-chiaro);
+  color: var(--colore-primario);
+  text-transform: capitalize;
+}
+
+.profilo-data {
+  font-size: var(--testo-sm);
+  color: var(--testo-chiaro);
+}
+
+/* ── STATS ── */
+.profilo-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spazio-4);
+  width: 100%;
+}
+
+.stat-card {
+  text-align: center;
+  padding: var(--spazio-4);
+  background: var(--sfondo-pagina);
+  border-radius: var(--raggio-lg);
+  border: 1.5px solid var(--bordo-colore);
+}
+
+.stat-numero {
+  font-size: var(--testo-3xl);
+  font-weight: 700;
+  color: var(--colore-primario);
+}
+
+.stat-label {
+  font-size: var(--testo-xs);
+  color: var(--testo-secondario);
+  margin-top: var(--spazio-1);
+}
+
+/* ── SEZIONE ── */
+.sezione {
+  background: var(--sfondo-card);
+  border-radius: var(--raggio-xl);
+  border: 1.5px solid var(--bordo-colore);
+  padding: var(--spazio-6);
+  box-shadow: var(--ombra-sm);
+}
+
+.sezione-titolo {
+  font-size: var(--testo-xl);
+  font-weight: 700;
+  margin-bottom: var(--spazio-4);
+}
+
+/* ── LISTA APPUNTI PROFILO ── */
+.appunto-profilo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spazio-3) 0;
+  border-bottom: 1px solid var(--bordo-colore);
+  cursor: pointer;
+  transition: var(--transizione-veloce);
+}
+.appunto-profilo:last-child { border-bottom: none; }
+.appunto-profilo:hover { color: var(--colore-primario); }
+
+.appunto-profilo-info { flex: 1; }
+.appunto-profilo-titolo {
+  font-weight: 600;
+  font-size: var(--testo-sm);
+}
+.appunto-profilo-meta {
+  font-size: var(--testo-xs);
+  color: var(--testo-chiaro);
+  margin-top: 2px;
+}
+.appunto-profilo-freccia {
+  color: var(--testo-chiaro);
+  font-size: var(--testo-lg);
+}
+
+@media (max-width: 480px) {
+  .profilo-stats { grid-template-columns: 1fr 1fr; }
+}

@@ -1,0 +1,32 @@
+.main-admin { margin: 80px auto var(--spazio-6); padding: 0 var(--spazio-6); max-width: 1100px; }
+.admin-titolo { font-family: var(--font-titoli); font-size: var(--testo-3xl); margin-bottom: var(--spazio-6); }
+.admin-stats { display: grid; grid-template-columns: repeat(5,1fr); gap: var(--spazio-4); margin-bottom: var(--spazio-8); }
+.admin-stat-card { background: var(--sfondo-card); border: 1.5px solid var(--bordo-colore); border-radius: var(--raggio-lg); padding: var(--spazio-4); text-align: center; }
+.admin-stat-numero { font-size: var(--testo-2xl); font-weight: 700; color: var(--colore-primario); }
+.admin-stat-label { font-size: var(--testo-xs); color: var(--testo-secondario); margin-top: var(--spazio-1); }
+.admin-tabs { display: flex; gap: var(--spazio-2); margin-bottom: var(--spazio-5); border-bottom: 1.5px solid var(--bordo-colore); }
+.admin-tab { padding: var(--spazio-3) var(--spazio-4); cursor: pointer; font-size: var(--testo-sm); font-weight: 600; color: var(--testo-secondario); border-bottom: 2px solid transparent; }
+.admin-tab:hover { color: var(--testo-principale); }
+.admin-tab.attiva { color: var(--colore-primario); border-bottom-color: var(--colore-primario); }
+.admin-sezione { display: none; }
+.admin-sezione.visibile { display: block; }
+.admin-tabella { width: 100%; background: var(--sfondo-card); border: 1.5px solid var(--bordo-colore); border-radius: var(--raggio-lg); overflow: hidden; border-collapse: collapse; }
+.admin-tabella th { text-align: left; font-size: var(--testo-xs); text-transform: uppercase; color: var(--testo-secondario); background: var(--sfondo-pagina); padding: var(--spazio-3) var(--spazio-4); }
+.admin-tabella td { padding: var(--spazio-3) var(--spazio-4); border-top: 1px solid var(--bordo-colore); font-size: var(--testo-sm); vertical-align: middle; }
+.badge-stato { display:inline-block; padding:2px 10px; border-radius: var(--raggio-full); font-size: var(--testo-xs); font-weight:600; }
+.badge-stato.approvato { background:#D1FAE5; color:#047857; }
+.badge-stato.in_revisione { background:#FEF3C7; color:#B45309; }
+.badge-stato.rifiutato { background:#FEE2E2; color:#B91C1C; }
+.badge-bannato { background:#FEE2E2; color:#B91C1C; padding:2px 10px; border-radius:var(--raggio-full); font-size:var(--testo-xs); font-weight:600; }
+.admin-azioni { display:flex; gap: var(--spazio-2); flex-wrap:wrap; }
+.admin-btn { border:none; padding:6px 12px; border-radius: var(--raggio-md); font-size: var(--testo-xs); font-weight:600; cursor:pointer; }
+.admin-btn-approva { background: var(--colore-successo); color:white; }
+.admin-btn-rifiuta { background: var(--colore-errore); color:white; }
+.admin-btn-ban  { background:#FEE2E2; color:#B91C1C; }
+.admin-btn-sban { background:#D1FAE5; color:#047857; }
+.admin-btn-elimina { background: var(--sfondo-pagina); color: var(--testo-secondario); border:1px solid var(--bordo-colore); }
+.admin-btn:hover { opacity:.85; }
+.admin-btn:disabled { opacity:.4; cursor:not-allowed; }
+select.admin-select-ruolo { padding:4px 8px; border-radius: var(--raggio-md); border:1.5px solid var(--bordo-colore); font-size: var(--testo-xs); }
+.admin-vuoto { padding: var(--spazio-8); text-align:center; color: var(--testo-chiaro); font-size: var(--testo-sm); }
+@media (max-width:800px) { .admin-stats { grid-template-columns:repeat(2,1fr); } }

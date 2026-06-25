@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pannello Admin — AppuntiHUB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variabili.css">
+  <link rel="stylesheet" href="../css/componenti.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-sinistra">
+      <a href="home.html" class="topbar-logo">📚 AppuntiHUB</a>
+    </div>
+    <div class="topbar-destra">
+      <a href="home.html" class="btn-carica" style="background:var(--sfondo-pagina);color:var(--testo-principale);border:1.5px solid var(--bordo-colore);">← Home</a>
+      <button class="btn-logout" id="btn-logout">Esci</button>
+    </div>
+  </header>
+  <main class="main-admin">
+    <h1 class="admin-titolo">🛠️ Pannello Amministrazione</h1>
+    <div id="messaggio-admin" class="messaggio"></div>
+    <div class="admin-stats">
+      <div class="admin-stat-card"><div class="admin-stat-numero" id="stat-utenti">—</div><div class="admin-stat-label">Utenti totali</div></div>
+      <div class="admin-stat-card"><div class="admin-stat-numero" id="stat-bannati">—</div><div class="admin-stat-label">Utenti bannati</div></div>
+      <div class="admin-stat-card"><div class="admin-stat-numero" id="stat-appunti">—</div><div class="admin-stat-label">Appunti totali</div></div>
+      <div class="admin-stat-card"><div class="admin-stat-numero" id="stat-revisione">—</div><div class="admin-stat-label">In revisione</div></div>
+      <div class="admin-stat-card"><div class="admin-stat-numero" id="stat-commenti">—</div><div class="admin-stat-label">Commenti totali</div></div>
+    </div>
+    <div class="admin-tabs">
+      <div class="admin-tab attiva" data-tab="revisione" onclick="cambiaTab('revisione')">📥 In revisione</div>
+      <div class="admin-tab" data-tab="appunti" onclick="cambiaTab('appunti')">📄 Tutti gli appunti</div>
+      <div class="admin-tab" data-tab="utenti" onclick="cambiaTab('utenti')">👥 Utenti</div>
+    </div>
+    <div class="admin-sezione visibile" id="sezione-revisione">
+      <table class="admin-tabella"><thead><tr><th>Titolo</th><th>Autore</th><th>Materia</th><th>Stato</th><th>Azioni</th></tr></thead>
+      <tbody id="tabella-revisione"></tbody></table>
+    </div>
+    <div class="admin-sezione" id="sezione-appunti">
+      <table class="admin-tabella"><thead><tr><th>Titolo</th><th>Autore</th><th>Materia</th><th>Stato</th><th>Azioni</th></tr></thead>
+      <tbody id="tabella-appunti"></tbody></table>
+    </div>
+    <div class="admin-sezione" id="sezione-utenti">
+      <table class="admin-tabella"><thead><tr><th>Email</th><th>Ruolo</th><th>Stato</th><th>Appunti</th><th>Commenti</th><th>Azioni</th></tr></thead>
+      <tbody id="tabella-utenti"></tbody></table>
+    </div>
+  </main>
+  <script src="../js/config.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

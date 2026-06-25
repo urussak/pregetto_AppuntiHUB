@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messaggi — AppuntiHUB</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variabili.css">
+  <link rel="stylesheet" href="../css/componenti.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/messaggi.css">
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-sinistra">
+      <a href="home.html" class="topbar-logo">📚 AppuntiHUB</a>
+    </div>
+    <div class="topbar-destra">
+      <img id="avatar-topbar" class="avatar-utente"
+           src="https://ui-avatars.com/api/?background=2563EB&color=fff&size=36&name=?"
+           alt="Profilo"
+           onclick="Utils.vai('profilo.html')"
+           style="cursor:pointer">
+      <button class="btn-logout" id="btn-logout">Esci</button>
+    </div>
+  </header>
+
+  <main class="main-messaggi">
+
+    <!-- Lista conversazioni -->
+    <div class="conv-lista">
+      <div class="conv-header">✉️ Messaggi</div>
+      <div class="conv-ricerca">
+        <input type="text" id="ricerca-conv" placeholder="Cerca conversazione...">
+      </div>
+      <div class="conv-items" id="conv-items">
+        <div style="padding: var(--spazio-4); color: var(--testo-chiaro); font-size: var(--testo-sm);">
+          Caricamento...
+        </div>
+      </div>
+    </div>
+
+    <!-- Area chat -->
+    <div class="chat-area">
+
+      <!-- Placeholder quando nessuna conversazione è aperta -->
+      <div class="chat-placeholder" id="chat-placeholder">
+        <div class="icona">💬</div>
+        <p>Seleziona una conversazione</p>
+      </div>
+
+      <!-- Header chat attiva -->
+      <div class="chat-header" id="chat-header">
+        <img class="chat-header-avatar" id="chat-header-avatar"
+             src="https://ui-avatars.com/api/?background=6D28D9&color=fff&size=36&name=?"
+             alt="Avatar">
+        <span class="chat-header-email" id="chat-header-email"></span>
+      </div>
+
+      <!-- Messaggi -->
+      <div class="chat-messaggi" id="chat-messaggi"></div>
+
+      <!-- Input invio -->
+      <div class="chat-input" id="chat-input">
+        <textarea
+          id="testo-messaggio"
+          placeholder="Scrivi un messaggio..."
+          rows="1"
+        ></textarea>
+        <button class="btn-invia" onclick="inviaMessaggio()" title="Invia">➤</button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/messaggi.js"></script>
+
+</body>
+</html>

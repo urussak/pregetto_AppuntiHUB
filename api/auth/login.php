@@ -1,0 +1,27 @@
+<?php
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../config/helpers.php';
+require_once __DIR__ . '/../config/email.php';
+setHeaders();
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') errore('Metodo non consentito.', 405);
+$body     = getBody();
+$email    = trim($body['email'] ?? '');
+$password = trim($body['password'] ?? '');
+if (!$email || !$password) errore('Email e password obbligatorie.');
+$stmt = $conn->prepare('SELECT id, email, password, ruolo, bannato FROM utenti WHERE email = ?');
+$stmt->bind_param('s', $email);
+$stmt->execute();
+$utente = $stmt->get_result()->fetch_assoc();
+$stmt->close();
+if (!$utente || !password_verify($password, $utente['password'])) errore('Credenziali non valide.', 401);
+if ((int)$utente['bannato'] === 1) errore('Il tuo account è stato sospeso. Contatta un amministratore.', 403);
+$codice = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+$scadenza = date('Y-m-d H:i:s', time() + 600);
+$conn->prepare('DELETE FROM otp WHERE id_utente = ?')->bind_param('i', $utente['id']);
+$conn->prepare('DELETE FROM otp WHERE id_utente = ?')->execute();
+$stmt2 = $conn->prepare('INSERT INTO otp (codice, id_utente, scadenza) VALUES (?, ?, ?)');
+$stmt2->bind_param('sis', $codice, $utente['id'], $scadenza);
+$stmt2->execute();
+$stmt2->close();
+inviaOTP($email, $codice);
+risposta(['messaggio' => 'Codice OTP inviato via email.', 'id_utente' => $utente['id']]);

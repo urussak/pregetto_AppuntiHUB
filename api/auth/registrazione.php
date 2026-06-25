@@ -1,0 +1,25 @@
+<?php
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../config/helpers.php';
+setHeaders();
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') errore('Metodo non consentito.', 405);
+$body     = getBody();
+$email    = trim($body['email']    ?? '');
+$password = trim($body['password'] ?? '');
+$ruolo    = trim($body['ruolo']    ?? '');
+if (!$email || !$password || !$ruolo) errore('Tutti i campi sono obbligatori.');
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) errore('Email non valida.');
+if (strlen($password) < 6) errore('La password deve avere almeno 6 caratteri.');
+if (!in_array($ruolo, ['studente', 'professore'])) errore('Ruolo non valido.');
+$stmt = $conn->prepare('SELECT id FROM utenti WHERE email = ?');
+$stmt->bind_param('s', $email);
+$stmt->execute();
+$stmt->store_result();
+if ($stmt->num_rows > 0) errore('Email già registrata.');
+$stmt->close();
+$hash = password_hash($password, PASSWORD_BCRYPT);
+$stmt = $conn->prepare('INSERT INTO utenti (email, password, ruolo) VALUES (?, ?, ?)');
+$stmt->bind_param('sss', $email, $hash, $ruolo);
+$stmt->execute();
+$stmt->close();
+risposta(['messaggio' => 'Registrazione completata. Effettua il login.'], 201);

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AppuntiHUB — Home</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variabili.css">
+  <link rel="stylesheet" href="../css/componenti.css">
+  <link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+
+  <!-- ── TOPBAR ── -->
+  <header class="topbar">
+    <div class="topbar-sinistra">
+      <div class="hamburger" id="hamburger" title="Menu">
+        <span></span><span></span><span></span>
+      </div>
+      <a href="home.html" class="topbar-logo">📚 AppuntiHUB</a>
+    </div>
+
+    <div class="topbar-ricerca">
+      <span class="icona-ricerca">🔍</span>
+      <input type="text" id="input-ricerca"
+             placeholder="Cerca appunti, materie, autori..."
+             autocomplete="off">
+    </div>
+
+    <div class="topbar-destra">
+      <!-- Bottone admin (visibile solo se ruolo admin, gestito da JS) -->
+      <a href="admin.html" id="link-admin" class="btn-carica"
+         style="display:none;background:#FEF3C7;color:#B45309;border:1.5px solid #FDE68A;">
+        🛠️ Admin
+      </a>
+      <!-- Bottone messaggi -->
+      <a href="messaggi.html" class="btn-carica" style="background:var(--sfondo-pagina);color:var(--testo-principale);border:1.5px solid var(--bordo-colore);">
+        ✉️ Messaggi
+      </a>
+      <!-- Bottone carica -->
+      <button class="btn-carica" id="btn-carica">＋ Carica</button>
+      <!-- Avatar → profilo -->
+      <img id="avatar-topbar" class="avatar-utente"
+           src="https://ui-avatars.com/api/?background=2563EB&color=fff&size=36&name=?"
+           alt="Profilo"
+           onclick="window.location.href='profilo.html'"
+           title="Il mio profilo"
+           style="cursor:pointer">
+      <button class="btn-logout" id="btn-logout">Esci</button>
+    </div>
+  </header>
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-titolo">Sfoglia per indirizzo</div>
+    <div id="sidebar-lista"></div>
+  </aside>
+  <div class="overlay-sidebar" id="overlay-sidebar"></div>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <div class="filtri-rapidi">
+      <button class="filtro-chip attivo" onclick="filtraFeed(this, null)">Tutti</button>
+      <button class="filtro-chip" onclick="filtraFeed(this, 'Informatica')">💻 Informatica</button>
+      <button class="filtro-chip" onclick="filtraFeed(this, 'Meccanica')">⚙️ Meccanica</button>
+      <button class="filtro-chip" onclick="filtraFeed(this, 'Elettrotecnica')">⚡ Elettrotecnica</button>
+      <button class="filtro-chip" onclick="filtraFeed(this, 'Liceo')">🔬 Liceo</button>
+    </div>
+
+    <div class="feed" id="feed"></div>
+
+  </main>
+
+  <!-- ── MODAL CARICA APPUNTO ── -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-titolo">Carica appunto</h2>
+        <button class="modal-chiudi" id="modal-chiudi">✕</button>
+      </div>
+
+      <div id="messaggio-upload" class="messaggio"></div>
+
+      <form id="form-upload" class="auth-form" novalidate>
+
+        <div class="campo">
+          <label for="upload-titolo">Titolo appunto</label>
+          <input type="text" id="upload-titolo"
+                 placeholder="Es. Appunti di Matematica — Cap. 3" required>
+        </div>
+
+        <div class="campo">
+          <label for="select-scuola">Scuola</label>
+          <select id="select-scuola">
+            <option value="">— Seleziona scuola —</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="select-indirizzo">Indirizzo</label>
+          <select id="select-indirizzo">
+            <option value="">— Prima seleziona scuola —</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="select-materia">Materia</label>
+          <select id="select-materia">
+            <option value="">— Prima seleziona indirizzo —</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="select-anno">Anno scolastico</label>
+          <select id="select-anno">
+            <option value="">— Seleziona anno —</option>
+            <option value="1° Anno">1° Anno</option>
+            <option value="2° Anno">2° Anno</option>
+            <option value="3° Anno">3° Anno</option>
+            <option value="4° Anno">4° Anno</option>
+            <option value="5° Anno">5° Anno</option>
+          </select>
+        </div>
+
+        <div class="drop-zone" id="drop-zone">
+          <div class="icona-pdf">📄</div>
+          <p id="drop-testo">Trascina qui il PDF o clicca per scegliere</p>
+          <input type="file" id="input-pdf" accept="application/pdf">
+        </div>
+
+        <button type="submit" id="btn-upload" class="btn btn-primario">Carica</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/home.js"></script>
+
+  <script>
+    function filtraFeed(chip, indirizzo) {
+      document.querySelectorAll('.filtro-chip').forEach(c => c.classList.remove('attivo'));
+      chip.classList.add('attivo');
+      renderFeed(!indirizzo ? tuttiAppunti : tuttiAppunti.filter(a =>
+        a.indirizzo?.toLowerCase().includes(indirizzo.toLowerCase())
+      ));
+    }
+  </script>
+
+</body>
+</html>

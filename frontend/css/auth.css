@@ -1,0 +1,272 @@
+/* css/auth.css
+   Stili specifici per le pagine login e registrazione */
+
+/* ─────────────────────────────────────────
+   LAYOUT PAGINA
+───────────────────────────────────────── */
+
+body {
+  font-family: var(--font-principale);
+  background-color: var(--sfondo-pagina);
+  color: var(--testo-principale);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spazio-4);
+}
+
+/* Sfondo decorativo con pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(37,99,235,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(245,158,11,0.06) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─────────────────────────────────────────
+   CARD PRINCIPALE
+───────────────────────────────────────── */
+
+.auth-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+}
+
+.auth-card {
+  background-color: var(--sfondo-card);
+  border-radius: var(--raggio-xl);
+  box-shadow: var(--ombra-xl);
+  padding: var(--spazio-10) var(--spazio-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spazio-6);
+
+  /* Animazione di entrata */
+  animation: entra 0.4s ease both;
+}
+
+@keyframes entra {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─────────────────────────────────────────
+   HEADER CARD (logo + titolo)
+───────────────────────────────────────── */
+
+.auth-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spazio-3);
+}
+
+.auth-logo {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--colore-primario), #7C3AED);
+  border-radius: var(--raggio-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.auth-titolo {
+  font-family: var(--font-titoli);
+  font-size: var(--testo-3xl);
+  color: var(--testo-principale);
+  line-height: 1.2;
+}
+
+.auth-sottotitolo {
+  font-size: var(--testo-sm);
+  color: var(--testo-secondario);
+}
+
+/* ─────────────────────────────────────────
+   FORM
+───────────────────────────────────────── */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spazio-4);
+}
+
+/* ─────────────────────────────────────────
+   AVATAR UPLOAD
+───────────────────────────────────────── */
+
+.avatar-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spazio-3);
+}
+
+.avatar-preview-wrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  cursor: pointer;
+}
+
+/* Il cerchio con l'immagine */
+.avatar-preview {
+  width: 96px;
+  height: 96px;
+  border-radius: var(--raggio-full);
+  object-fit: cover;
+  border: 3px solid var(--bordo-colore);
+  transition: var(--transizione-normale);
+}
+
+/* Overlay scuro con icona al hover */
+.avatar-overlay {
+  position: absolute;
+  inset: 0; /* equivale a top:0 right:0 bottom:0 left:0 */
+  border-radius: var(--raggio-full);
+  background-color: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transizione-veloce);
+}
+.avatar-overlay span {
+  color: white;
+  font-size: 22px;
+}
+
+.avatar-preview-wrapper:hover .avatar-overlay {
+  opacity: 1;
+}
+.avatar-preview-wrapper:hover .avatar-preview {
+  border-color: var(--colore-primario);
+}
+
+/* Input file nascosto (si attiva cliccando il wrapper) */
+#input-avatar {
+  display: none;
+}
+
+.avatar-testo {
+  font-size: var(--testo-xs);
+  color: var(--testo-secondario);
+  text-align: center;
+}
+
+/* ─────────────────────────────────────────
+   SEZIONE OTP (nascosta finché non serve)
+───────────────────────────────────────── */
+
+.sezione-otp {
+  display: none; /* mostrata via JS dopo il login */
+  flex-direction: column;
+  gap: var(--spazio-4);
+  animation: entra 0.3s ease both;
+}
+.sezione-otp.visibile {
+  display: flex;
+}
+
+.otp-info {
+  text-align: center;
+  padding: var(--spazio-4);
+  background-color: var(--colore-primario-chiaro);
+  border-radius: var(--raggio-md);
+}
+.otp-info p {
+  font-size: var(--testo-sm);
+  color: var(--colore-primario-scuro);
+  margin-top: var(--spazio-1);
+}
+
+/* Input OTP grande e centrato */
+.otp-input-grande {
+  text-align: center;
+  font-size: var(--testo-2xl) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5rem;
+}
+
+/* ─────────────────────────────────────────
+   FOOTER CARD (link "Hai già un account?")
+───────────────────────────────────────── */
+
+.auth-footer {
+  text-align: center;
+  font-size: var(--testo-sm);
+  color: var(--testo-secondario);
+}
+
+/* ─────────────────────────────────────────
+   SELEZIONE RUOLO (studente / professore)
+───────────────────────────────────────── */
+
+.selezione-ruolo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spazio-3);
+}
+
+.ruolo-card {
+  border: 2px solid var(--bordo-colore);
+  border-radius: var(--raggio-md);
+  padding: var(--spazio-4) var(--spazio-3);
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transizione-veloce);
+  background-color: var(--sfondo-input);
+  user-select: none;
+}
+.ruolo-card:hover {
+  border-color: var(--colore-primario);
+  background-color: var(--colore-primario-chiaro);
+}
+.ruolo-card.selezionato {
+  border-color: var(--colore-primario);
+  background-color: var(--colore-primario-chiaro);
+}
+.ruolo-card .ruolo-icona {
+  font-size: 28px;
+  display: block;
+  margin-bottom: var(--spazio-1);
+}
+.ruolo-card .ruolo-nome {
+  font-size: var(--testo-sm);
+  font-weight: 600;
+  color: var(--testo-principale);
+  text-transform: capitalize;
+}
+
+/* Input hidden per il valore del ruolo */
+#ruolo-selezionato { display: none; }
+
+/* ─────────────────────────────────────────
+   RESPONSIVE - schermi piccoli
+───────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: var(--spazio-8) var(--spazio-5);
+  }
+  .auth-titolo {
+    font-size: var(--testo-2xl);
+  }
+}
