@@ -1,9 +1,4 @@
-# ✅ FIX: Passa l'header Authorization a PHP (necessario su Apache/XAMPP)
+Options -Indexes
 RewriteEngine On
 RewriteCond %{HTTP:Authorization} ^(.*)
 RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
-
-# Abilita CORS preflight
-Header always set Access-Control-Allow-Origin "*"
-Header always set Access-Control-Allow-Methods "GET, POST, DELETE, OPTIONS"
-Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
