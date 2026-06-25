@@ -1,0 +1,8 @@
+# Blocca la navigazione diretta nella cartella api/
+# Permette solo le chiamate PHP legittime
+Options -Indexes
+
+# Passa l'header Authorization a PHP (necessario per JWT su Apache)
+RewriteEngine On
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]

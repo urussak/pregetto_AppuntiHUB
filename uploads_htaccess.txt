@@ -1,0 +1,9 @@
+# Blocca la navigazione diretta nella cartella uploads/
+Options -Indexes
+
+# Impedisce l'esecuzione di PHP dentro uploads/
+# (protezione da upload di file PHP malevoli)
+<FilesMatch "\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
