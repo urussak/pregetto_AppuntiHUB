@@ -6,7 +6,7 @@ const CONFIG = {
     // In locale  → http://localhost/appuntihub/api
     // Su hosting → https://tuosito.altervista.org/appuntihub/api
     // Non serve modificare nulla al momento del deploy.
-    API_BASE_URL: window.location.origin + '/appuntihub/api',
+   API_BASE_URL: window.location.origin + '/api',
 
     TOKEN_KEY:  'appuntihub_token',
     UTENTE_KEY: 'appuntihub_utente',
