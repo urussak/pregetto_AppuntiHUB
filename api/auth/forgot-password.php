@@ -12,8 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') errore('Metodo non consentito.', 405)
 
 $body  = getBody();
 $email = trim($body['email'] ?? '');
-
-if (!$email || !isEmailValida($email)) errore('Inserisci un\'email valida.');
+if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) errore('Inserisci un\'email valida.');
 
 // Risposta sempre uguale per sicurezza (non rivela se l'email esiste)
 $messaggio = ['messaggio' => 'Se l\'email è registrata, riceverai un link a breve.'];
