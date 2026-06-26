@@ -22,7 +22,14 @@ const Api = {
         }
 
         const risposta = await fetch(`${CONFIG.API_BASE_URL}${endpoint}`, opzioni);
-        const dati     = await risposta.json();
+        const testo     = await risposta.text();
+
+        let dati;
+        try {
+            dati = testo ? JSON.parse(testo) : {};
+        } catch (e) {
+            throw new Error(`Errore del server (${risposta.status}). Riprova più tardi.`);
+        }
 
         if (!risposta.ok) {
             throw new Error(dati.errore || 'Errore dal server');
