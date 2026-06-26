@@ -17,8 +17,10 @@ if (!$utente || !password_verify($password, $utente['password'])) errore('Creden
 if ((int)$utente['bannato'] === 1) errore('Il tuo account è stato sospeso. Contatta un amministratore.', 403);
 $codice = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
 $scadenza = date('Y-m-d H:i:s', time() + 600);
-$conn->prepare('DELETE FROM otp WHERE id_utente = ?')->bind_param('i', $utente['id']);
-$conn->prepare('DELETE FROM otp WHERE id_utente = ?')->execute();
+$stmtDel = $conn->prepare('DELETE FROM otp WHERE id_utente = ?');
+$stmtDel->bind_param('i', $utente['id']);
+$stmtDel->execute();
+$stmtDel->close();
 $stmt2 = $conn->prepare('INSERT INTO otp (codice, id_utente, scadenza) VALUES (?, ?, ?)');
 $stmt2->bind_param('sis', $codice, $utente['id'], $scadenza);
 $stmt2->execute();
